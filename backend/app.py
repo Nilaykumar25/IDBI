@@ -12,7 +12,7 @@ from scoring.scoring_engine import ScoringEngine
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://your-app.vercel.app"])
 
 # Configuration
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key')
