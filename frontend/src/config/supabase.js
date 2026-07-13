@@ -1,0 +1,15 @@
+/**
+ * Supabase client configuration.
+ * Initializes the Supabase client with environment variables.
+ */
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('⚠ Supabase environment variables not configured')
+  console.warn('  → Create a .env file based on .env.example')
+}
+
+export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '')

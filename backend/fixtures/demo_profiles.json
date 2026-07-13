@@ -1,0 +1,78 @@
+{
+  "profiles": [
+    {
+      "msme_id": "DEMO-LOW-001",
+      "sector": "Trader",
+      "description": "Clearly Low risk profile - High revenue stability, strong liquidity, excellent compliance",
+      "features": {
+        "revenue_stability": 0.88,
+        "transaction_velocity": 0.82,
+        "liquidity_ratio": 0.92,
+        "employment_consistency": 0.78,
+        "compliance_score": 0.95,
+        "growth_indicator": 0.85
+      },
+      "expected_risk_band": "Low",
+      "expected_score_range": "82-88",
+      "use_case": "Demo profile showcasing a healthy MSME with strong financial indicators across all dimensions"
+    },
+    {
+      "msme_id": "DEMO-HIGH-001",
+      "sector": "Services",
+      "description": "Clearly High risk profile - Poor revenue stability, weak liquidity, low compliance",
+      "features": {
+        "revenue_stability": 0.22,
+        "transaction_velocity": 0.28,
+        "liquidity_ratio": 0.18,
+        "employment_consistency": 0.35,
+        "compliance_score": 0.35,
+        "growth_indicator": 0.15
+      },
+      "expected_risk_band": "High",
+      "expected_score_range": "24-32",
+      "use_case": "Demo profile showcasing a struggling MSME with weak financial health indicators"
+    },
+    {
+      "msme_id": "DEMO-MED-001",
+      "sector": "Manufacturer",
+      "description": "Medium/borderline risk profile - Mixed indicators with decent revenue but poor transaction velocity and declining employment",
+      "features": {
+        "revenue_stability": 0.68,
+        "transaction_velocity": 0.35,
+        "liquidity_ratio": 0.58,
+        "employment_consistency": 0.42,
+        "compliance_score": 0.72,
+        "growth_indicator": 0.48
+      },
+      "expected_risk_band": "Medium",
+      "expected_score_range": "54-62",
+      "use_case": "Demo profile showcasing a borderline MSME with some strengths and some weaknesses"
+    },
+    {
+      "msme_id": "DEMO-PARTIAL-001",
+      "sector": "Trader",
+      "description": "Partial data scenario - GST, UPI, AA data available; EPFO adapter simulates failure",
+      "features": {
+        "revenue_stability": 0.75,
+        "transaction_velocity": 0.72,
+        "liquidity_ratio": 0.68,
+        "employment_consistency": 0.5,
+        "compliance_score": 0.82,
+        "growth_indicator": 0.65
+      },
+      "expected_risk_band": "Low",
+      "expected_score_range": "68-76",
+      "use_case": "Demo profile for testing partial adapter failure scenario - EPFO data unavailable, employment_consistency uses default imputation",
+      "missing_sources": ["EPFO"],
+      "adapter_instructions": {
+        "EPFO": "simulate_failure"
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "created_for": "MSME Financial Health Score System - Live Demonstrations",
+    "total_profiles": 4,
+    "purpose": "These demo profiles are designed for live demonstrations and testing. They represent clear examples of Low/Medium/High risk MSMEs and a partial data scenario."
+  }
+}

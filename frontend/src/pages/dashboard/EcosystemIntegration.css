@@ -1,0 +1,578 @@
+/* EcosystemIntegration Component Styles - Polished full-width responsive */
+.ecosystem-container {
+  width: 100%;
+  padding: 2rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--paper-white);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.ecosystem-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.ecosystem-header h2 {
+  color: var(--primary-navy);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.ecosystem-header p {
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.integration-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.integration-card {
+  padding: var(--spacing-xl);
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.integration-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.integration-icon {
+  color: var(--primary-teal);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.integration-header h3 {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: 1.125rem;
+  color: var(--primary-navy);
+}
+
+.integration-header p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+
+.integration-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.integration-description {
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.integration-description strong {
+  color: var(--primary-navy);
+  font-weight: 600;
+}
+
+.btn-integration {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--primary-teal);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9375rem;
+}
+
+.btn-integration:hover:not(:disabled) {
+  background: var(--primary-navy);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-integration:disabled {
+  background: var(--gray-400);
+  cursor: not-allowed;
+}
+
+.error-message {
+  padding: var(--spacing-md);
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-md);
+  color: #991b1b;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.warning-message {
+  padding: var(--spacing-md);
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius-md);
+  color: #92400e;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-lg);
+}
+
+.integration-result {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+}
+
+.integration-result.success {
+  color: #166534;
+}
+
+.integration-result svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.result-content {
+  flex: 1;
+}
+
+.result-content strong {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-size: 1rem;
+}
+
+.result-content p {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: 0.875rem;
+  word-break: break-all;
+}
+
+.timestamp {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: #15803d;
+  font-size: 0.875rem;
+  margin-top: var(--spacing-sm);
+}
+
+.lender-matching-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-header svg {
+  color: var(--primary-teal);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.section-header h3 {
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--primary-navy);
+  font-size: 1.25rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--gray-600);
+}
+
+.lenders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.lender-card {
+  padding: var(--spacing-xl);
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.lender-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: var(--primary-teal);
+}
+
+.lender-header {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.lender-header h4 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--primary-navy);
+  font-size: 1.125rem;
+}
+
+.product-type {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.lender-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--gray-50);
+  border-radius: var(--radius-sm);
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 0.9375rem;
+  color: var(--primary-navy);
+  font-weight: 700;
+}
+
+.lender-features {
+  margin-bottom: var(--spacing-lg);
+}
+
+.lender-features strong {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--gray-700);
+  font-size: 0.875rem;
+}
+
+.lender-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.lender-features li {
+  padding-left: var(--spacing-lg);
+  position: relative;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+.lender-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--risk-low);
+  font-weight: bold;
+}
+
+.btn-contact {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--primary-navy);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-contact:hover {
+  background: var(--primary-teal);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.ecosystem-info {
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.ecosystem-info h3 {
+  color: var(--primary-navy);
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 1.125rem;
+}
+
+.ecosystem-info p {
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.ecosystem-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-lg) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.ecosystem-info li {
+  padding-left: var(--spacing-lg);
+  position: relative;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+.ecosystem-info li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary-teal);
+  font-weight: bold;
+}
+
+.ecosystem-info strong {
+  color: var(--primary-navy);
+  font-weight: 600;
+}
+
+.info-note {
+  color: var(--gray-600);
+  font-size: 0.875rem;
+  font-style: italic;
+  padding: var(--spacing-md);
+  background: white;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary-teal);
+  margin: var(--spacing-lg) 0 0 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .integration-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lenders-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+  }
+
+  .lender-card:hover {
+    transform: none;
+  }
+}
+
+/* ==================== DARK MODE SUPPORT ==================== */
+.dark .ecosystem-container {
+  background: #1a1d24;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark .ecosystem-header h2 {
+  color: #f9fafb;
+}
+
+.dark .ecosystem-header p {
+  color: #d1d5db;
+}
+
+.dark .integration-card {
+  background: #22252e;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark .integration-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .integration-header h3 {
+  color: #f9fafb;
+}
+
+.dark .integration-header p {
+  color: #d1d5db;
+}
+
+.dark .integration-description {
+  color: #e5e7eb;
+}
+
+.dark .integration-description strong {
+  color: #f9fafb;
+}
+
+.dark .btn-integration {
+  background: #14b8a6;
+  color: #0f1115;
+}
+
+.dark .btn-integration:hover:not(:disabled) {
+  background: #5eead4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .btn-integration:disabled {
+  background: #4b5563;
+  color: #9ca3af;
+}
+
+.dark .error-message {
+  background: rgba(220, 38, 38, 0.15);
+  border-color: rgba(220, 38, 38, 0.4);
+  color: #fca5a5;
+}
+
+.dark .warning-message {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+}
+
+.dark .integration-result {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.dark .integration-result.success {
+  color: #86efac;
+}
+
+.dark .result-content strong {
+  color: #f9fafb;
+}
+
+.dark .result-content p {
+  color: #d1d5db;
+}
+
+.dark .timestamp {
+  color: #34d399;
+}
+
+.dark .section-header h3 {
+  color: #f9fafb;
+}
+
+.dark .section-header p {
+  color: #d1d5db;
+}
+
+.dark .lender-card {
+  background: #22252e;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark .lender-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  border-color: #14b8a6;
+}
+
+.dark .lender-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .lender-header h4 {
+  color: #f9fafb;
+}
+
+.dark .product-type {
+  background: #2a2e38;
+  color: #d1d5db;
+}
+
+.dark .detail-row {
+  background: #2a2e38;
+}
+
+.dark .detail-label {
+  color: #9ca3af;
+}
+
+.dark .detail-value {
+  color: #f9fafb;
+}
+
+.dark .lender-features strong {
+  color: #d1d5db;
+}
+
+.dark .lender-features li {
+  color: #d1d5db;
+}
+
+.dark .btn-contact {
+  background: #14b8a6;
+  color: #0f1115;
+}
+
+.dark .btn-contact:hover {
+  background: #5eead4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .ecosystem-info {
+  background: rgba(20, 184, 166, 0.1);
+  border-color: rgba(20, 184, 166, 0.3);
+}
+
+.dark .ecosystem-info h3 {
+  color: #f9fafb;
+}
+
+.dark .ecosystem-info p {
+  color: #e5e7eb;
+}
+
+.dark .ecosystem-info li {
+  color: #e5e7eb;
+}
+
+.dark .ecosystem-info strong {
+  color: #f9fafb;
+}
+
+.dark .info-note {
+  background: #22252e;
+  border-left-color: #14b8a6;
+  color: #d1d5db;
+}

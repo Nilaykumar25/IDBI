@@ -1,0 +1,303 @@
+/* Credit file dossier layout */
+.msme-search-container {
+  display: flex;
+  min-height: calc(100vh - 60px);
+  background: var(--cool-paper);
+}
+
+/* Left rail: data source file tabs */
+.data-source-rail {
+  width: 240px;
+  background: var(--paper-white);
+  border-right: 1px solid var(--divider);
+  padding: 2rem 0;
+  flex-shrink: 0;
+}
+
+.data-source-rail-header {
+  padding: 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.data-source-rail-header h3 {
+  font-family: var(--font-family-ledger);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.data-source-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.data-source-tab {
+  padding: 0.875rem 1.5rem;
+  border-left: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.data-source-tab:hover {
+  background: var(--cool-paper);
+}
+
+.data-source-tab.active {
+  border-left-color: var(--brass);
+  background: var(--cool-paper);
+}
+
+.source-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--divider);
+  flex-shrink: 0;
+}
+
+.source-status-dot.pending {
+  background: var(--text-muted);
+}
+
+.source-status-dot.complete {
+  background: var(--risk-low);
+}
+
+.data-source-label {
+  font-family: var(--font-family-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.data-source-code {
+  font-family: var(--font-family-data);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.125rem;
+}
+
+/* Main pane: formal intake document */
+.msme-search-main {
+  flex: 1;
+  padding: 3rem;
+  max-width: 900px;
+}
+
+.credit-file-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--divider);
+  padding-bottom: 1.5rem;
+}
+
+.credit-file-header h1 {
+  font-family: var(--font-family-ledger);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.credit-file-header p {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Form section styling - like filling an official document */
+.form-section {
+  margin-bottom: 2.5rem;
+}
+
+.section-header {
+  font-family: var(--font-family-ledger);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--divider);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-grid.single-column {
+  grid-template-columns: 1fr;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-family: var(--font-family-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.form-field label .required-mark {
+  color: var(--risk-high);
+  margin-left: 0.125rem;
+}
+
+/* Data/code input fields - monospace treatment */
+.form-field input[type="text"],
+.form-field select {
+  font-family: var(--font-family-body);
+  font-size: 0.9375rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--divider);
+  background: var(--paper-white);
+  color: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.15s;
+}
+
+/* Specific styling for ID/code fields */
+.form-field input[data-type="code"] {
+  font-family: var(--font-family-data);
+  letter-spacing: 0.02em;
+  font-size: 0.875rem;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--brass);
+  box-shadow: 0 0 0 2px rgba(184, 147, 74, 0.15);
+}
+
+.form-field input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Submit button - brass seal authority */
+.submit-actions {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-submit-assessment {
+  font-family: var(--font-family-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  background: var(--brass);
+  color: var(--ink-navy);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.btn-submit-assessment:hover:not(:disabled) {
+  background: #A37E3F;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(184, 147, 74, 0.25);
+}
+
+.btn-submit-assessment:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading-note {
+  font-family: var(--font-family-body);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Error message styling */
+.error-message {
+  background: rgba(162, 59, 46, 0.08);
+  border-left: 3px solid var(--risk-high);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-family-body);
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  border-radius: 2px;
+}
+
+/* Loading spinner container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .msme-search-container {
+    flex-direction: column;
+  }
+  
+  .data-source-rail {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--divider);
+    padding: 1rem 0;
+  }
+  
+  .data-source-tabs {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .data-source-tab {
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+  }
+  
+  .data-source-tab.active {
+    border-bottom-color: var(--brass);
+    border-left-color: transparent;
+  }
+}
+
+@media (max-width: 768px) {
+  .msme-search-main {
+    padding: 1.5rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .credit-file-header h1 {
+    font-size: 1.75rem;
+  }
+}
+

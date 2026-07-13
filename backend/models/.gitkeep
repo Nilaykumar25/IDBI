@@ -1,0 +1,3 @@
+# Models directory
+# ML model artifacts will be stored here after training
+# See scripts/train_model.py for model generation
