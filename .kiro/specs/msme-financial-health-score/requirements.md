@@ -296,7 +296,7 @@ This document defines requirements for the MSME Financial Health Score system, a
 
 #### Acceptance Criteria
 
-1. THE Synthetic_Dataset_Generator SHALL produce between 500 and 1000 MSME profiles
+1. THE Synthetic_Dataset_Generator SHALL produce exactly 1000 MSME profiles
 2. THE Synthetic_Dataset_Generator SHALL assign Risk_Band labels with distribution of approximately 50% Low risk, 30% Medium risk, and 20% High risk
 3. THE Synthetic_Dataset_Generator SHALL generate feature values with realistic correlations to Risk_Band labels
 4. WHERE a profile is labeled Low risk, THE Synthetic_Dataset_Generator SHALL generate features indicating strong revenue stability, high transaction volumes, healthy liquidity ratios, and consistent employment

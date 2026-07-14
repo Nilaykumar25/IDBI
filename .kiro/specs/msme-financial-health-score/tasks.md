@@ -111,7 +111,7 @@ The implementation follows an incremental approach: infrastructure → data adap
     - _Requirements: 23.6_
   
   - [x] 6.3 Implement dataset export and generation script
-    - Create generate_dataset.py script producing 500-1000 profiles
+    - Create generate_dataset.py script producing exactly 1000 profiles
     - Export to CSV/JSON format compatible with scikit-learn
     - _Requirements: 23.7_
 

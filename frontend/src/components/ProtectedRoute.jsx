@@ -1,18 +1,36 @@
-import React from 'react'
+/**
+ * Protected Route Component
+ * 
+ * Redirects unauthenticated users to the sign-in page.
+ * Shows loading state while checking authentication.
+ */
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
 const ProtectedRoute = ({ children }) => {
-  const { session, loading } = useAuth()
+  const { user, loading } = useAuth()
 
+  // Show loading state while checking authentication
   if (loading) {
-    return <div>Loading...</div>
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontFamily: 'system-ui, -apple-system, sans-serif'
+      }}>
+        <div>Loading...</div>
+      </div>
+    )
   }
 
-  if (!session) {
+  // Redirect to login if not authenticated
+  if (!user) {
     return <Navigate to="/login" replace />
   }
 
+  // Render protected content if authenticated
   return children
 }
 

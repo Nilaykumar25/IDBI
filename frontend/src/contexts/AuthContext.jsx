@@ -1,9 +1,18 @@
 /**
  * Authentication context provider.
- * Manages auth state throughout the app using Supabase Auth.
+ * Manages auth state throughout the app using Firebase Auth.
  */
 import { createContext, useContext, useEffect, useState } from 'react'
-import { supabase } from '../lib/supabase'
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut as firebaseSignOut,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup
+} from 'firebase/auth'
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
+import { auth, db } from '../lib/firebase'
 
 const AuthContext = createContext({})
 
@@ -15,63 +24,132 @@ export const useAuth = () => {
   return context
 }
 
+// Helper function to map Firebase error codes to user-friendly messages
+const getFirebaseErrorMessage = (errorCode) => {
+  switch (errorCode) {
+    case 'auth/wrong-password':
+    case 'auth/user-not-found':
+    case 'auth/invalid-credential':
+      return 'Invalid email or password'
+    case 'auth/email-already-in-use':
+      return 'This email is already registered. Please sign in instead.'
+    case 'auth/weak-password':
+      return 'Password should be at least 6 characters'
+    case 'auth/invalid-email':
+      return 'Invalid email address'
+    case 'auth/user-disabled':
+      return 'This account has been disabled'
+    case 'auth/too-many-requests':
+      return 'Too many failed attempts. Please try again later.'
+    case 'auth/network-request-failed':
+      return 'Network error. Please check your connection.'
+    case 'auth/popup-closed-by-user':
+      return 'Sign-in popup was closed'
+    case 'auth/unauthorized-domain':
+      return 'This domain is not authorized. Please contact support or try email/password sign-in.'
+    case 'auth/operation-not-allowed':
+      return 'Google Sign-In is not enabled. Please contact support.'
+    default:
+      return 'An error occurred. Please try again.'
+  }
+}
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [session, setSession] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-      setUser(session?.user ?? null)
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser)
       setLoading(false)
     })
 
-    // Listen for auth state changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-      setUser(session?.user ?? null)
-      setLoading(false)
-    })
-
-    return () => subscription.unsubscribe()
+    return () => unsubscribe()
   }, [])
 
   const signUp = async (email, password) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    })
-    if (error) throw error
-    return data
+    try {
+      // Create user account with Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      const user = userCredential.user
+
+      // Create user profile document in Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        email: user.email,
+        createdAt: serverTimestamp(),
+        // Add any additional fields from your signup form here
+        // e.g., name, role, etc.
+      })
+
+      return userCredential
+    } catch (error) {
+      // Throw user-friendly error message
+      const friendlyMessage = getFirebaseErrorMessage(error.code)
+      const customError = new Error(friendlyMessage)
+      customError.code = error.code
+      throw customError
+    }
   }
 
   const signIn = async (email, password) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    if (error) throw error
-    return data
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+      return userCredential
+    } catch (error) {
+      // Throw user-friendly error message
+      const friendlyMessage = getFirebaseErrorMessage(error.code)
+      const customError = new Error(friendlyMessage)
+      customError.code = error.code
+      throw customError
+    }
+  }
+
+  const signInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider()
+      const result = await signInWithPopup(auth, provider)
+      const user = result.user
+
+      // Create or update user profile in Firestore
+      await setDoc(
+        doc(db, 'users', user.uid),
+        {
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          createdAt: serverTimestamp(),
+          lastSignIn: serverTimestamp()
+        },
+        { merge: true }
+      )
+
+      return result
+    } catch (error) {
+      const friendlyMessage = getFirebaseErrorMessage(error.code)
+      const customError = new Error(friendlyMessage)
+      customError.code = error.code
+      throw customError
+    }
   }
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut()
-    if (error) throw error
-    // Clear any cached data
-    sessionStorage.clear()
-    localStorage.removeItem('currentMSME')
+    try {
+      await firebaseSignOut(auth)
+      // Clear any cached data
+      sessionStorage.clear()
+      localStorage.removeItem('currentMSME')
+    } catch (error) {
+      const friendlyMessage = getFirebaseErrorMessage(error.code)
+      throw new Error(friendlyMessage)
+    }
   }
 
   const value = {
     user,
-    session,
     loading,
     signUp,
     signIn,
+    signInWithGoogle,
     signOut,
   }
 
